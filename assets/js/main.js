@@ -16,9 +16,9 @@ function getRndInteger(min, max) {
  */
 var numeriPC = [];
 while (numeriPC.length < 5) {
-    getRndInteger(1, 100);
-    if(!numeriPC.includes(getRndInteger(1, 100))){
-        numeriPC.push(getRndInteger(1, 100));
+    var numero =  getRndInteger(1, 100);
+    if(!numeriPC.includes(numero)){
+        numeriPC.push(numero);
     }
 
 }
@@ -26,35 +26,41 @@ console.log(numeriPC);
 
 /** 
  * * Fa partire il timer
- * Chiede all utente di inserire uno per volta 5 numeri
+ * Chiede all utente di inserire uno per volta i 5 numeri
+ * Mostra i numeri che l' utente ha indovinato
  */
 var displayNumeriPC = alert(numeriPC);
-var jikan = setTimeout(function () {
-   
-    do {
+var divEl = document.getElementById("risultato");
+var timer = setTimeout(function () {
+    var numeriIndovinati = [];
+    var i = 0
+    while (i < 5) {
         var scelteUente = Number(prompt("inserisci un numero tra quelli presenti prima"));
-        numeriUtente.push(scelteUente)
-    } while (numeriUtente.length < 5);
-  
-}, 5000)
+        if(numeriPC.includes(scelteUente)){
+            numeriIndovinati.push(scelteUente)
+        }
 
-var numeriUtente = [];
-console.log(numeriUtente);
-
-
-
-
-
-
-/* var tempo = 30;
-
-var timer = setInterval(function() {
-   
-    if(timer === 0){
-        clearInterval(timer);
-        alert("tempo scaduto")  
-    }else{
-        tempo--;
+        i++;
     }
-       
-}, 3000) */
+    console.log(numeriIndovinati); 
+
+    for (var index = 0; index < numeriIndovinati.length; index++) {
+        var element = numeriIndovinati[index];
+        
+        divEl.insertAdjacentHTML("beforeend", 
+        `
+        <p>${element}</p>
+
+        `)
+
+    }
+    
+}, 30000)
+
+
+    
+
+
+
+
+

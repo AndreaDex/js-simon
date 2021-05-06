@@ -1,0 +1,16 @@
+.container,
+#risultato {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#risultato {
+  flex-direction: row;
+  color: green;
+}
+p {
+  font-weight: 700;
+  font-size: 25px;
+  padding: 10px 20px;
+}
